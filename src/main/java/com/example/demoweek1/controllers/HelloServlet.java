@@ -1,4 +1,4 @@
-package com.example.demoweek1;
+package com.example.demoweek1.controllers;
 
 import java.io.*;
 
