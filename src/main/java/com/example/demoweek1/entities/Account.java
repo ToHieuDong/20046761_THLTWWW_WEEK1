@@ -1,19 +1,37 @@
 package com.example.demoweek1.entities;
 
+import com.example.demoweek1.enums.AccountStatus;
+import jakarta.persistence.*;
+import jakarta.persistence.Query;
+
+
+@Entity
+@Table(name = "account")
+@NamedQueries(
+        @NamedQuery(name = "Account.findAll", query = "select Account from Account where Account.status=1")
+)
 public class Account {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "account_id", length = 50, nullable = false)
     private String account_id;
+    @Column(name = "full_name", length = 50, nullable = false)
     private String full_name;
+    @Column(name = "password", length = 50, nullable = false)
     private String password;
+    @Column(name = "email", length = 50)
     private String email;
+    @Column(name = "phone", length = 50)
     private String phone;
-    private byte status;
+    @Column(name = "status", columnDefinition = "tiny(4)")
+    private AccountStatus status;
 
 
     public Account() {
 
     }
 
-    public Account(String accountId, String fullName, String password, String email, String phone, byte status) {
+    public Account(String accountId, String fullName, String password, String email, String phone, AccountStatus status) {
         account_id = accountId;
         full_name = fullName;
         this.password = password;
@@ -42,7 +60,7 @@ public class Account {
         return phone;
     }
 
-    public byte getStatus() {
+    public AccountStatus getStatus() {
         return status;
     }
 
@@ -66,7 +84,7 @@ public class Account {
         this.phone = phone;
     }
 
-    public void setStatus(byte status) {
+    public void setStatus(AccountStatus status) {
         this.status = status;
     }
 

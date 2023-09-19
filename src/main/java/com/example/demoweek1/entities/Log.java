@@ -1,18 +1,29 @@
 package com.example.demoweek1.entities;
 
+import jakarta.persistence.*;
+
 import java.util.Date;
 
-public class log {
+@Entity
+@Table(name = "log")
+public class Log {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", columnDefinition = "bigint(20)")
     private long id;
+    @Column(name = "account_id", length = 50, nullable = false)
     private String account_id;
+    @Column(name = "notes", length = 50, nullable = false)
     private String notes;
+    @Column(name = "login_time", columnDefinition = "datetime", nullable = false)
     private Date login_time;
+    @Column(name = "logout_time", columnDefinition = "datetime", nullable = false)
     private Date logout_time;
 
-    public log() {
+    public Log() {
     }
 
-    public log(long id, String account_id, String notes, Date login_time, Date logout_time) {
+    public Log(long id, String account_id, String notes, Date login_time, Date logout_time) {
         this.id = id;
         this.account_id = account_id;
         this.notes = notes;
@@ -62,7 +73,7 @@ public class log {
 
     @Override
     public String toString() {
-        return "log{" +
+        return "Log{" +
                 "id=" + id +
                 ", account_id='" + account_id + '\'' +
                 ", notes='" + notes + '\'' +
