@@ -25,7 +25,16 @@ dependencies {
     compileOnly('jakarta.platform:jakarta.jakartaee-web-api:9.1.0')
 
     implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '3.2.0'
-    implementation('org.eclipse.persistence:org.eclipse.persistence.jpars:4.0.2')
+    implementation('org.eclipse.persistence:org.eclipse.persistence.jpars:4.0.1')
+
+    implementation('org.glassfish.jersey.containers:jersey-container-servlet:3.1.2')
+    implementation('org.glassfish.jersey.media:jersey-media-json-jackson:3.1.2')
+    implementation('org.glassfish.jersey.inject:jersey-cdi2-se:3.1.2')
+    implementation('org.jboss.weld.se:weld-se-core:5.1.0.Final')
+
+    implementation 'com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.15.2'
+    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.0'
+    implementation 'org.glassfish.jaxb:jaxb-runtime:4.0.3'
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")

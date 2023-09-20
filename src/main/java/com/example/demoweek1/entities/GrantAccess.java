@@ -2,18 +2,20 @@ package com.example.demoweek1.entities;
 
 import jakarta.persistence.*;
 
-@Embeddable
-@Table(name = "GrantAccess")
+@Entity
+@Table(name = "grant_access")
 public class GrantAccess {
     @Column(name = "note", length = 50)
     private String note;
     @Column(name = "is_grant", columnDefinition = "bit(1)")
     private boolean is_grant;
 
+    @Id
     @ManyToOne
     @JoinColumn(name = "account_id")
     private Account account;
 
+    @Id
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;

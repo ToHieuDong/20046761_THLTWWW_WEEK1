@@ -1,18 +1,17 @@
 package com.example.demoweek1.entities;
 
 import com.example.demoweek1.enums.AccountStatus;
+
 import jakarta.persistence.*;
-import jakarta.persistence.Query;
+
+import java.util.List;
+import java.util.Set;
 
 
 @Entity
 @Table(name = "account")
-@NamedQueries(
-        @NamedQuery(name = "Account.findAll", query = "select Account from Account where Account.status=1")
-)
 public class Account {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "account_id", length = 50, nullable = false)
     private String account_id;
     @Column(name = "full_name", length = 50, nullable = false)
@@ -23,9 +22,11 @@ public class Account {
     private String email;
     @Column(name = "phone", length = 50)
     private String phone;
-    @Column(name = "status", columnDefinition = "tiny(4)")
+    @Column(name = "status", columnDefinition = "tinyint(4)")
     private AccountStatus status;
 
+//    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+//    private List<GrantAccess> listGrant;
 
     public Account() {
 

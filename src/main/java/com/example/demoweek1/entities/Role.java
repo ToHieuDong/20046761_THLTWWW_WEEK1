@@ -7,14 +7,13 @@ import jakarta.persistence.*;
 @Table(name = "role")
 public class Role {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id", length = 50, nullable = false)
     private String role_id;
     @Column(name = "role_name", length = 50, nullable = false)
     private String role_name;
     @Column(name = "description", length = 50)
     private String description;
-    @Column(name = "status",columnDefinition = "tiny(4)", nullable = false)
+    @Column(name = "status",columnDefinition = "tinyint(4)", nullable = false)
     private RoleStatus status;
 
     public Role() {

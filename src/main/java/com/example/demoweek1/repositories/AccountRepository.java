@@ -48,7 +48,7 @@ public class AccountRepository {
         return em.find(Account.class, id);
     }
     public List<Account> getAllAccounts() {
-        return em.createNamedQuery("Account.findAll", Account.class).getResultList();
+        return em.createNativeQuery("SELECT * FROM account", Account.class).getResultList();
     }
 
 }
