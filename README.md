@@ -2,12 +2,12 @@
 20046761
 
 Yêu cầu:
-o	Thêm, cập nhật, xóa ở các bảng đã cho.
-o	Đăng nhập
-o	Hiển thị thông tin tài khoản (nếu đăng nhập thành công)
-o	Hiển thị các quyền của một account.
-o	Hiển thị các account của một role
-o	Cấp quyền cho một account
+  Thêm, cập nhật, xóa ở các bảng đã cho.
+  Đăng nhập
+  Hiển thị thông tin tài khoản (nếu đăng nhập thành công)
+  Hiển thị các quyền của một account.
+  Hiển thị các account của một role
+  Cấp quyền cho một account
 
 
 
