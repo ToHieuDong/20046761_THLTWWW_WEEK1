@@ -5,6 +5,7 @@ import com.example.demoweek1.enums.AccountStatus;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.Query;
 
 import java.util.List;
 import java.util.Optional;
@@ -49,6 +50,37 @@ public class AccountRepository {
     }
     public List<Account> getAllAccounts() {
         return em.createNativeQuery("SELECT * FROM account", Account.class).getResultList();
+    }
+
+    public Optional<Account> isLogin(String email, String password) {
+        try {
+            Query nativeQuery = em.createNativeQuery(
+                    "SELECT * FROM Account a WHERE password = ?1 AND (email = ?2 OR phone = ?2) AND status = ?3", Account.class);
+
+            nativeQuery.setParameter(1, password);
+            nativeQuery.setParameter(2, email);
+            nativeQuery.setParameter(3, 0);
+
+            Account account = (Account) nativeQuery.getSingleResult();
+
+            return Optional.of(account);
+        } catch (Exception e) {
+            return Optional.empty();
+        }
+
+    }
+
+    public void updateStatus(String id, AccountStatus status) {
+        Account account = em.find(Account.class, id);
+        account.setStatus(status);
+        try {
+            et.begin();
+            em.merge(account);
+            et.commit();
+        } catch (Exception e) {
+            et.rollback();
+            e.printStackTrace();
+        }
     }
 
 }
